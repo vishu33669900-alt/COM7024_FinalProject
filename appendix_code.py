@@ -1,8 +1,3 @@
-# ============================================================
-# COM7024 – Programming for Data Analytics
-# Full EDA & Pre-processing Pipeline (Guideline-Compliant)
-# ============================================================
-
 """
 Library Justification:
 - pandas: for data import, manipulation, and cleaning.
@@ -164,7 +159,7 @@ if "Field of Study" in df.columns:
     ax.set_ylabel("Count")
     save_plot(fig, "field_study_distribution.png")
 
-# --- Age distribution (new) ---
+# --- Age distribution
 if "Age" in df.columns:
     fig, ax = plt.subplots(figsize=(6,4))
     ax.hist(df["Age"], bins=20, color='cornflowerblue', edgecolor='black')
@@ -203,7 +198,7 @@ if target in df.columns and "Years of Experience" in df.columns:
     ax.set_ylabel("Years of Experience")
     save_plot(fig, "experience_by_target_box.png")
 
-# --- Job Satisfaction vs Career Change (new) ---
+# --- Job Satisfaction vs Career Change 
 if target in df.columns and "Job Satisfaction" in df.columns:
     fig, ax = plt.subplots(figsize=(6,4))
     df.boxplot(column="Job Satisfaction", by=target, ax=ax)
@@ -244,9 +239,7 @@ if target in df.columns:
         chi2_stat, chi2_p, _, _ = stats.chi2_contingency(ct)
         print(f"Chi-square (Education vs Career Change): stat={chi2_stat:.2f}, p={chi2_p:.4f}")
 
-# ------------------------------------------------------------
-# 11. Final Summary and Auto-open Output Folder (Windows only)
-# ------------------------------------------------------------
+
 print("\n--- Summary ---")
 print(f"Total observations after cleaning: {len(df)}")
 print("Figures and CSV outputs saved successfully.")
@@ -255,4 +248,5 @@ print("All analysis steps completed as per COM7024 Guidelines.")
 print("\n=== Processing Complete ===")
 
 subprocess.Popen(r'explorer.exe "C:\Users\USER\Desktop\Arden\figures"')
+
 
